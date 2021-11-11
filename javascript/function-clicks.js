@@ -23,7 +23,7 @@ $(() => {
     currentFunction = new TextBox(contextReal);
   });
   $("#drawing-polygon").click(() => {
-    currentFunction = new DrawingPolygon(contextReal);
+    currentFunction = new DrawingPolygon(contextReal, contextDraft);
   });
   $("#drawing-straight-line").click(() => {
     currentFunction = new DrawingStraightLine(contextReal, contextDraft);
@@ -32,8 +32,9 @@ $(() => {
     currentFunction = new ColorBucket(contextReal);
   });
   $("#drawing-curve").click(() => {
-    currentFunction = new DrawingCurve(contextReal);
+    currentFunction = new DrawingCurve(contextReal, contextDraft);
   });
+
   // -------- Brush range --------
   $("#brush-range").change(function () {
     styleGuide.penWidth = $("#brush-range").val();

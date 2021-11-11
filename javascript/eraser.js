@@ -1,5 +1,5 @@
 /**********************************************
- * Drawing Line Functionality
+ * Eraser Functionality
  * ==================================
  * This class extends the PaintFunction class, which you can find in canvas-common
  * Remember, order matters
@@ -15,18 +15,14 @@ class Eraser extends PaintFunction {
 
   // On mouse down, ensure that the pen has these features
   onMouseDown(coord, event) {
-    // Fill in the color
-    this.context.strokeStyle = "white";
-    // Kind of line
     this.context.lineJoin = "round";
-    // Width of line
-    this.context.lineWidth = styleGuide.penWidth;
-    // Drawing the line here
+    this.context.lineWidth = styleGuide.penWidth; //only penWidth can be changed
     this.context.beginPath();
     this.context.moveTo(coord[0], coord[1]);
   }
   // Clicking and removing your mouse
   onDragging(coord, event) {
+    this.context.globalCompositeOperation = "destination-out";
     this.draw(coord[0], coord[1]);
   }
 
@@ -34,7 +30,9 @@ class Eraser extends PaintFunction {
   onMouseUp() {
     saveStroke();
   }
-  onMouseLeave() {}
+  onMouseLeave() {
+    this.context.globalCompositeOperation = "source-over";
+  }
   onMouseEnter() {}
 
   draw(x, y) {
