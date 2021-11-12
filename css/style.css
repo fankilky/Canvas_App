@@ -21,6 +21,7 @@
 }
 
 /* --------- brand --------- */
+
 .brand {
   position: absolute;
   top: 20px;
@@ -35,6 +36,7 @@
 }
 
 /* ---- control-panel button ----- */
+
 #shape-buttons {
   position: absolute;
   width: 150px;
@@ -61,6 +63,7 @@
 }
 
 /* ---- functional-buttons button ----- */
+
 #functional-buttons {
   position: absolute;
   width: 150px;
@@ -76,30 +79,39 @@
   left: 200px;
   background-color: rgb(209, 209, 209);
 }
-/* .range-container {
+.range-container {
   position: absolute;
   padding: 15px;
-  width: 400px;
+  width: 200px;
   left: 700px;
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
-} */
-
-/* --------- color palette --------- */
-.color-sq-small {
-  height: 30px;
-  width: 30px;
 }
 
-#color-sq-small-1 {
-  background-color: red;
+#brush-sliders {
+  position: absolute;
+  left: 500px;
 }
 
-#color-sq-small-2 {
-  background-color: blue;
+/* ---- palette ----- */
+
+#color-sq {
+  width: 300px;
+  font-size: 18px;
 }
 
-#color-sq-small-3 {
-  background-color: green;
+.palette {
+  width: 300px;
+  height: 100px;
+}
+
+.sp-preview {
+  width: 40px;
+  height: 40px;
+}
+
+.sp-dd {
+  padding-top: 10px;
+  font-size: 25px;
 }
