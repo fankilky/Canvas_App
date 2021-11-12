@@ -68,5 +68,6 @@ class DrawingCurve extends PaintFunction {
 
   onMouseLeave() {
     this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+    this.newCurve = false;
   }
 }
