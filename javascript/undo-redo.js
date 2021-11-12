@@ -34,6 +34,8 @@ function redo() {
         return;
     } else if (redoStack.length > 0) {
         var nextImage = new Image();
+        contextReal.fillStyle = "#ffffff";
+        contextReal.fillRect(0, 0, canvasDraft.width, canvasDraft.height);
         nextImage.src = redoStack[redoStack.length - 1];
         nextImage.onload = function() {
             contextReal.drawImage(nextImage, 0, 0);
