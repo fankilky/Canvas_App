@@ -1,58 +1,82 @@
-.canvas {
-  border: 4px rgb(121, 121, 121) solid;
-  position: absolute;
-  top: 50px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-}
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Oleo+Script&display=swap");
 
 #canvas-draft {
   background-color: transparent;
 }
 
-#canvas-container {
-  height: 720px;
+/* --------- convas container --------- */
+
+.canvas {
+  border: 4px rgb(121, 121, 121) solid;
+  position: absolute;
+  left: 200px;
+  top: 50px;
+}
+
+#control-panel {
+  position: absolute;
+  width: 200px;
+  height: 778px;
+  background-color: rgb(209, 209, 209);
 }
 
 /* --------- brand --------- */
 .brand {
-  margin-left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 43px;
+  z-index: 10;
 }
 
 .brand h1 {
   color: rgb(148, 100, 46);
-  font-family: "Sigmar One", cursive;
+  font-family: "Oleo Script", cursive;
+  text-shadow: 3px 3px rgb(224, 176, 114);
 }
 
 /* ---- control-panel button ----- */
 #shape-buttons {
   position: absolute;
-  padding: 15px;
-  width: 400px;
-  left: 30px;
+  width: 150px;
+  top: 100px;
+  left: 37px;
 }
 
-.btn {
-  width: 60px;
-  margin-left: 3px;
-  margin-right: 3px;
+.btn.raised {
+  width: 50px;
+  height: 40px;
+  padding: 6px 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 0 0 #007299;
+  background-color: #33a6cc;
+}
+.btn.raised:active,
+.btn.raised.active {
+  background: #33a6cc;
+  box-shadow: none;
+  margin-top: 3px;
+  margin-bottom: 7px;
 }
 
 /* ---- functional-buttons button ----- */
 #functional-buttons {
   position: absolute;
-  padding: 15px;
-  width: 230px;
-  left: 430px;
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
+  width: 150px;
+  top: 380px;
+  left: 37px;
 }
 
 /* ---- range-container ----- */
-
 #range-container {
+  width: 1088px;
+  height: 50px;
+  position: absolute;
+  left: 200px;
+  background-color: rgb(209, 209, 209);
+}
+/* .range-container {
   position: absolute;
   padding: 15px;
   width: 400px;
@@ -60,13 +84,7 @@
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
-}
-
-/* --------- emoji --------- */
-.emoji-image {
-  width: 50px;
-  height: 50px;
-}
+} */
 
 /* --------- color palette --------- */
 .color-sq-small {
