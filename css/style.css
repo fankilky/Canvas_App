@@ -1,87 +1,132 @@
 .canvas {
-  border: 4px rgb(121, 121, 121) solid;
-  position: absolute;
-  top: 50px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
+    border: 4px rgb(121, 121, 121) solid;
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
 
 #canvas-draft {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 #canvas-container {
-  height: 720px;
+    height: 720px;
 }
 
+
 /* --------- brand --------- */
+
 .brand {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .brand h1 {
-  color: rgb(148, 100, 46);
-  font-family: "Sigmar One", cursive;
+    color: rgb(148, 100, 46);
+    font-family: "Sigmar One", cursive;
 }
 
+
 /* ---- control-panel button ----- */
+
 #shape-buttons {
-  position: absolute;
-  padding: 15px;
-  width: 400px;
-  left: 30px;
+    position: absolute;
+    padding: 15px;
+    width: 400px;
+    left: 30px;
 }
 
 .btn {
-  width: 60px;
-  margin-left: 3px;
-  margin-right: 3px;
+    width: 60px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
+
 /* ---- functional-buttons button ----- */
+
 #functional-buttons {
-  position: absolute;
-  padding: 15px;
-  width: 230px;
-  left: 430px;
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
+    position: absolute;
+    padding: 15px;
+    width: 230px;
+    left: 430px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
 }
+
 
 /* ---- range-container ----- */
 
 #range-container {
-  position: absolute;
-  padding: 15px;
-  width: 400px;
-  left: 700px;
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
+    position: absolute;
+    padding: 15px;
+    width: 400px;
+    left: 700px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
 }
+
 
 /* --------- emoji --------- */
+
 .emoji-image {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
+
 /* --------- color palette --------- */
-.color-sq-small {
-  height: 30px;
-  width: 30px;
+
+
+/* .color-sq-small {
+    height: 30px;
+    width: 30px;
 }
 
 #color-sq-small-1 {
-  background-color: red;
+    background-color: red;
 }
 
 #color-sq-small-2 {
-  background-color: blue;
+    background-color: blue;
 }
 
 #color-sq-small-3 {
-  background-color: green;
+    background-color: green;
+} */
+
+
+/* ---- palette ----- */
+
+#color-sq {
+    width: 300px;
+    font-size: 18px;
 }
+
+.palette {
+    width: 300px;
+    height: 100px;
+}
+
+.sp-preview {
+    width: 40px;
+    height: 40px;
+}
+
+.sp-dd {
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+
+/* .sp-palette-container {
+    width: 200px;
+} */
+
+
+/* .sp-thumb-inner {
+    padding: 50px;
+} */

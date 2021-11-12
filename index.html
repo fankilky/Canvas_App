@@ -54,20 +54,20 @@
             <button type='button' class='btn self-made btn-square-l' id='clear-button'><i class= 'far fa-trash-alt'></i></button>
 
         </div>
-        <div id='range-container'>
-            <div class='range-container' id="emoji-range-sliders">
+        <div id='range-container' class="d-flex flex-column">
+            <!-- <div class='range-container' id="emoji-range-sliders">
                 <form>
                     <div class="form-group">
                         <label for="emoji-range">Emoji Size: <span id = 'emoji-size-number'>72</span></label>
                         <input id="emoji-range" type="range" class="form-control-range" min=1 0 max=1 50 value=7 2 step=1>
                     </div>
                 </form>
-            </div>
+            </div> -->
             <div class='range-container' id="font-range-sliders">
                 <form>
                     <div class="form-group">
-                        <label for="font-range">Font Size: <span id = 'font-size-number'>12</span></label>
-                        <input id="font-range" type="range" class="form-control-range" min=5 max=5 2 value=1 2 step=1>
+                        <label for="font-range">Font Size: <span id = 'font-size-number'>20</span></label>
+                        <input id="font-range" type="range" class="form-control-range" min=12 max=48 2 value=20 2 step=1>
                     </div>
                     <!-- <div id='font-picker-div'>
                         <p id='font-picker-text'><b>Select Font:</b></p>
@@ -87,7 +87,7 @@
                 <form>
                     <div class="form-group">
                         <label for="brush-range">Pen Width: <span id = 'brush-size-number'>10</span></label>
-                        <input id="brush-range" type="range" class="form-control-range" min=1 max=50 0 value=1 0 step=1>
+                        <input id="brush-range" type="range" class="form-control-range" min=5 max=80 0 value=10 0 step=1>
                     </div>
                 </form>
                 <!-- <div id="round-or-square">
@@ -122,19 +122,19 @@
             </div>-->
 
             <div id='color-sq'>
-                <div class='color-sq-small' id='color-sq-small-1'>
+                <!-- <div class='color-sq-small' id='color-sq-small-1'>
                 </div>
                 <div class='color-sq-small' id='color-sq-small-2'>
                 </div>
                 <div class='color-sq-small' id='color-sq-small-3'>
-                </div>
-                <input type='text' id="palette" />
-                <span class="btn btn-info fa fa-paint-brush" id="outer">
-                Outer
-                </span>
-                <span class="btn btn-info fa fa-paint-brush" id="inner"> Inner
-                </span>
+                </div> -->
+                <span id="outer"><i class="fa fa-paint-brush"></i>  Stroke</span>
+                <input type='text' class="palette" id="paletteOuter" />
+                <span id="inner"><i class="fa fa-paint-brush"></i>  Fill</span>
+                <input type='text' class="palette" id="paletteInner" />
             </div>
+
+
     </section>
 
 

@@ -3,77 +3,103 @@ class TextBox extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        // this.escape = false;
+        this.newBox = false;
+        this.addText = document.createElement('input');
     }
 
     onMouseDown(coord, event) {
         setCanvasToStyleGuide()
         this.origX = coord[0];
         this.origY = coord[1];
-        // this.escape = false;
-        // this.contextReal.font = `${styleGuide.textSize}px ${styleGuide.font}`;
-        // this.contextReal.fillStyle = styleGuide.fillColor;
-        // let addDate = document.createElement ocaleString()}`
-        // addDate.type = 'text';
-        // addDate.style.position = 'fixed';
-        // addDate.style.backgroundColor = 'rgba(0,0,0,0.2)'
-        // addDate.style.color = 'rgba(255,255,255,0.8)'
-        // addDate.style.border = "2px red solid";
-        // addDate.style.placeholder = 'Type please!';
-        // addDate.style.height = 40;
-        // addDate.style.width = 350;
-        // addDate.style.font = styleGuide.font;
-        // addDate.style.fontSize = `${styleGuide.textSize*3}px`
-        // addDate.placeholder = "To add text, click here, type, and push 'Enter'";
-        // addDate.style.left = (this.origX + 5) + 'px'; //the position of addDate when you click mouse//
-        // addDate.style.top = (this.origY + 45) + 'px';
-        // addDate.id = 'dateBox'
-        // document.body.appendChild(addDate);
-        let dateString = `${new Date().toLocaleString()}`
-        this.contextReal.font = `${styleGuide.textSize*2}px ${styleGuide.font}`
-        this.contextReal.fillStyle = 'rgba(0,0,0,0.2)'
-        this.contextReal.fillRect(this.origX - styleGuide.textSize, this.origY - styleGuide.textSize * 2.5, this.contextReal.measureText(dateString).width + styleGuide.textSize * 2, styleGuide.textSize * 4, this.contextReal)
-        this.contextReal.fillStyle = 'rgba(255,255,255,0.8)'
-        this.contextReal.textAlign = 'start'
-        this.contextReal.fillText(`${new Date().toLocaleString()}`, this.origX, this.origY);
-        // document.body.removeChild(addDate);
+        this.contextReal.font = `${styleGuide.textSize*1.3}px ${styleGuide.font}`;
+        this.contextReal.fillStyle = styleGuide.fillColor;
+
+        let x = this.origX;
+        let y = this.origY;
+        // Creating New Textbox
+        if (this.newBox == false) {
+            this.newBox = true;
+            // let addText = document.createElement('input')
+            this.addText.type = 'text';
+            this.addText.style.position = 'fixed';
+            this.addText.style.backgroundColor = 'rgba(0,0,0,0.2)'
+            this.addText.style.color = styleGuide.fillColor;
+            this.addText.style.height = `50px`;
+            this.addText.style.width = `${350*styleGuide.textSize/20}px`;
+            this.addText.addEventListener('focus', (event) => {
+                event.target.style.background = 'rgba(255, 216, 0, 0.1)';
+                event.target.style.outline = '2px solid #111111'
+            });
+            this.addText.style.font = styleGuide.font;
+            this.addText.style.fontSize = `${styleGuide.textSize*1.3}px`
+            this.addText.placeholder = "Press 'Enter' after typing text.";
+            this.addText.style.left = (this.origX + 5) + 'px'; //the position of this.addText when you click mouse//
+            this.addText.style.top = (this.origY + 45) + 'px';
+            this.addText.id = 'textBox';
+            document.body.appendChild(this.addText);
+
+
+
+        }
+        //Confirm adding textbox
+
+        if (this.newBox == true) {
+            document.getElementById('textBox').onkeydown = function confirmAdd(input) {
+                if (input.key == 'Enter') {
+                    this.typed = document.getElementById('textBox').value;
+                    this.newBox = false;;
+                    console.log(this)
+
+                    //Add Date
+                    if (this.typed == '#date') {
+                        let contextRealCopy = document.getElementById("canvas-real").getContext("2d")
+                        let dateString = `${new Date().toLocaleDateString()}`
+                        contextRealCopy.font = `${styleGuide.textSize*2}px ${styleGuide.font}`
+                        contextRealCopy.fillStyle = 'rgba(0,0,0,0.2)'
+                        contextRealCopy.fillRect(x - styleGuide.textSize, y - styleGuide.textSize * 2.5, contextRealCopy.measureText(dateString).width + styleGuide.textSize * 2, styleGuide.textSize * 4, contextRealCopy)
+                        contextRealCopy.fillStyle = 'rgba(255,255,255,0.8)'
+                        contextRealCopy.textAlign = 'start'
+                        contextRealCopy.fillText(`${new Date().toLocaleDateString()}`, x, y);
+                        document.body.removeChild(this);
+                        saveStroke()
+                        this.newBox = false;;
+                    } else if (this.typed == '#time') {
+                        //Add Time
+                        let contextRealCopy = document.getElementById("canvas-real").getContext("2d")
+                        let dateString = `${new Date().toLocaleTimeString()}`
+                        contextRealCopy.font = `${styleGuide.textSize*2}px ${styleGuide.font}`
+                        contextRealCopy.fillStyle = 'rgba(0,0,0,0.2)'
+                        contextRealCopy.fillRect(x - styleGuide.textSize, y - styleGuide.textSize * 2.5, contextRealCopy.measureText(dateString).width + styleGuide.textSize * 2, styleGuide.textSize * 4, contextRealCopy)
+                        contextRealCopy.fillStyle = 'rgba(255,255,255,0.8)'
+                        contextRealCopy.textAlign = 'start'
+                        contextRealCopy.fillText(`${new Date().toLocaleTimeString()}`, x, y);
+                        document.body.removeChild(this);
+                        saveStroke()
+                        this.newBox = false;;
+                    } else {
+                        contextReal.fillText(this.typed, event.clientX, event.clientY - 28);
+                        document.body.removeChild(this);
+                        // fontBoxCounter = false;
+                        saveStroke();
+                        this.newBox = false;;
+                    }
+                }
+            }
+        }
     }
 
-    onDragging(coord, event) {
-        // Manipulating the context draft
-
-        // Allows you to actually draw out your squares
-        this.contextDraft.clearRect(
-            0,
-            0,
-            canvasDraft.width,
-            canvasDraft.height
-        );
-        // Pass in the original x and y coordinates, followed by the new coordinates that we get for position x and y
-        this.drawRectangle(this.origX, this.origY, coord[0], coord[1], this.contextDraft)
-        this.escape = false;
-    }
+    onDragging() {}
 
     onMouseMove() {}
 
     // Committing the element to the canvas
-    onMouseUp() {
-        saveStroke()
-    }
-    onMouseLeave() {
-        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height)
-        this.escape = true;
+    onMouseUp() {}
+    onMouseLeave(coord) {
+        if (coord[0] < this.origX + 300 && coord[0] > this.origX - 300 && coord[1] < this.origY + 40 && coord[1] > this.origY - 40) {} else {
+            $('#textBox').remove();
+            this.newboX = false;
+        }
     }
     onMouseEnter() {}
-
-
-    drawRectangle(x1, y1, x2, y2, context) {
-        context.beginPath();
-        context.rect(
-            x1, y1, x2 - x1, y2 - y1
-        );
-        context.stroke();
-        context.fill();
-    }
 
 }

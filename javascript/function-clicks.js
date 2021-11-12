@@ -32,10 +32,15 @@ $(() => {
         currentFunction = new ColorBucket(contextReal);
     });
     $("#drawing-curve").click(() => {
-        currentFunction = new DrawingCurve(contextReal);
+        currentFunction = new DrawingCurve(contextReal, contextDraft);
     });
     $("#drawing-shadow-dots").click(() => {
         currentFunction = new DrawingShadowDots(contextReal);
+    });
+    // -------- Font Size range --------
+    $("#font-range").change(function() {
+        styleGuide.textSize = $("#font-range").val();
+        $("#font-size-number").html(styleGuide.textSize);
     });
     // -------- Brush range --------
     $("#brush-range").change(function() {
@@ -55,40 +60,49 @@ $(() => {
 
 
     // ------------ Color Palette ------------
-    let editOuter = true;
+    // let editOuter = true;
 
-    function changeColour(newColour) {
-        if (editOuter) {
-            styleGuide.drawColor = newColour;
-        } else {
-            styleGuide.fillColor = newColour;
-        }
-    }
-    $(".color-sq-small").click(function() {
-        changeColour($(this).css("background-color"));
-    });
+    // function changeColour(newColour) {
+    //     if (editOuter) {
+    //         styleGuide.drawColor = newColour;
+    //     } else {
+    //         styleGuide.fillColor = newColour;
+    //     }
+    // }
+    // $(".color-sq-small").click(function() {
+    //     changeColour($(this).css("background-color"));
+    // });
 
-    $("#palette").on("move.spectrum", function(e, tinycolor) {
-        changeColour($(".sp-preview-inner").css("background-color"));
-    });
-    $("#palette").on("change.spectrum", function(e, tinycolor) {
-        changeColour($(".sp-preview-inner").css("background-color"));
-    });
-
-    $(document).ready(function() {
-        $("#palette").spectrum({
-            showPalette: true,
-            showSelectionPalette: true,
-            showInput: true,
-            showAlpha: true,
-            palette: [],
+    let setPalette = function(paletteId, defaultCol) {
+        $(`.palette`).on("move.spectrum", function(e, tinycolor) {
+            console.log($(`.sp-preview-inner`).eq(0).css("background-color"))
+            console.log($(`.sp-preview-inner`).eq(1).css("background-color"))
+            styleGuide.drawColor = $(`.sp-preview-inner`).eq(0).css("background-color");
+            styleGuide.fillColor = $(`.sp-preview-inner`).eq(1).css("background-color")
         });
-    });
+        // $(`#${paletteId}`).on("change.spectrum", function(e, tinycolor) {
+        //     styleGuide.fillColor = $(`#${paletteId} .sp-preview-inner`).css("background-color");
+        // });
+        $(document).ready(function() {
+            $(`#${paletteId}`).spectrum({
+                color: defaultCol,
+                showPalette: true,
+                showSelectionPalette: true,
+                showInput: true,
+                showAlpha: true,
+                palette: [],
+            });
+        });
+    }
+    setPalette('paletteOuter', 'rgb(0,0,0)')
+    setPalette('paletteInner', 'rgb(0,200,255)')
 
-    $("#outer").click(function() {
-        editOuter = true;
-    });
-    $("#inner").click(function() {
-        editOuter = false;
-    });
+
+
+    // $("#outer").click(function() {
+    //     editOuter = true;
+    // });
+    // $("#inner").click(function() {
+    //     editOuter = false;
+    // });
 });

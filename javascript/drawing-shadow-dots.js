@@ -8,15 +8,14 @@ class DrawingShadowDots extends PaintFunction {
         setCanvasToStyleGuide()
             // Drawing the line here
         this.drawDot(coord[0], coord[1], this.contextReal)
+        saveStroke()
     }
 
     // Clicking and removing your mouse
     onDragging() {}
 
     onMouseMove() {}
-    onMouseUp() {
-        saveStroke()
-    }
+    onMouseUp() {}
     onMouseLeave() {}
     onMouseEnter() {}
 
