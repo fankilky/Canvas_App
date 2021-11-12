@@ -1,7 +1,6 @@
-let ourCanvas = $('#canvas-real');
+let ourCanvas = $("#canvas-real");
 let undoStack = [];
 let redoStack = [];
-
 
 function saveStroke() {
     var lastMove = ourCanvas[0].toDataURL();
@@ -9,7 +8,7 @@ function saveStroke() {
     redoStack = [];
 }
 
-$('#undo-button').click(undo)
+$("#undo-button").click(undo);
 
 function undo() {
     if (undoStack.length == 0) {
@@ -27,7 +26,7 @@ function undo() {
     redoStack.push(undoStack.pop());
 }
 
-$('#redo-button').click(redo)
+$("#redo-button").click(redo);
 
 function redo() {
     if (redoStack.length == 0) {
@@ -46,9 +45,9 @@ function redo() {
 
 $(document).keydown(function(e) {
     if (keyListeners.cmdZ == true) {
-        undo()
+        undo();
     }
     if (keyListeners.cmdSftZ == true) {
-        redo()
+        redo();
     }
 });
