@@ -127,4 +127,27 @@ $(() => {
     function selectButton(button) {
         button.css({ 'background-color': 'rgb(155, 255, 155)' })
     }
+
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    // Help center hover
+    $("#help-button").mouseenter(() => {
+        $("#help-text").show();
+    });
+
+    $("#help-button").mouseleave(() => {
+        $("#help-text").hide();
+    });
 });
+// $("#outer").click(function() {
+//     editOuter = true;
+// });
+// $("#inner").click(function() {
+//     editOuter = false;
+// });
+
+// tooltip of buttons
+
+// });

@@ -19,8 +19,7 @@ let styleGuide = {
     penWidth: 10,
     dashed: [],
     lineCap: "round", // for dashes, put in the distance, for none make array empty
-    emojiSource: "",
-    emojiLength: 72,
+    lineJoin: "miter",
     backgroundColor: "white",
     textSize: 20,
     font: "Arial",

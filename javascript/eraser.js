@@ -15,8 +15,6 @@ class Eraser extends PaintFunction {
 
     // On mouse down, ensure that the pen has these features
     onMouseDown(coord, event) {
-            setCanvasToStyleGuide()
-            this.context.lineJoin = "round";
             this.context.lineWidth = styleGuide.penWidth; //only penWidth can be changed
             this.context.beginPath();
             this.context.moveTo(coord[0], coord[1]);
