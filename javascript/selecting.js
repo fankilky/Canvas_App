@@ -206,7 +206,7 @@ class Selecting extends PaintFunction {
             this.objCopy = new ImageData(($.extend(true, {}, this.obj).data), this.obj.width)
                 // this.obj = null
                 // this.selectionMade = false
-            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+                // this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             this.contextDraft.beginPath();
             this.contextDraft.rect(this.origX, this.origY, this.finalX - this.origX, this.finalY - this.origY);
             this.contextDraft.stroke();
