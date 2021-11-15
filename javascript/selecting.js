@@ -114,7 +114,7 @@ class Selecting extends PaintFunction {
         this.contextDraft.putImageData(obj2[0], obj2[1], obj2[2]);
     };
 
-    onMouseLeave() {
+    onMouseLeave(coord, e) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             if (this.imageDragging) {
                 this.contextReal.putImageData(this.obj, this.origX, this.origY)
@@ -129,7 +129,7 @@ class Selecting extends PaintFunction {
             this.origY = null;
             this.originalMove = false;
             this.dragCountAfterPaste = 0
-            console.log(`leave`)
+            e.target.style.cursor = 'default'
         }
         // onMouseEnter() {}
 
