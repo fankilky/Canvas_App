@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Oleo+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&family=Oleo+Script&display=swap");
 
 #canvas-draft {
   background-color: transparent;
@@ -54,8 +54,7 @@
   box-shadow: 0 3px 0 0 #007299;
   background-color: #33a6cc;
 }
-.btn.raised:active,
-.btn.raised.active {
+.btn.raised:active {
   background: #33a6cc;
   box-shadow: none;
   margin-top: 3px;
@@ -67,51 +66,100 @@
 #functional-buttons {
   position: absolute;
   width: 150px;
-  top: 380px;
+  top: 400px;
   left: 37px;
 }
 
-/* ---- range-container ----- */
-#range-container {
-  width: 1088px;
-  height: 50px;
+/* ----Top bar - brush/font/palette icon---- */
+#brush-icon,
+#font-icon {
   position: absolute;
   left: 200px;
-  background-color: rgb(209, 209, 209);
-}
-.range-container {
-  position: absolute;
-  padding: 15px;
-  width: 200px;
-  left: 700px;
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
 }
 
-#brush-sliders {
+#brush-icon,
+#font-icon,
+#color-icon {
+  background-color: rgb(185, 185, 185);
+  width: 45px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.fa-brush,
+.font-icon,
+.fa-palette {
+  font-size: 25px;
+  margin: 0 auto;
+}
+
+/* #brushrange-container {
+  display: none;
+} */
+/* ---- range-container ----- */
+
+.range-container {
+  width: 1043px;
+  height: 50px;
   position: absolute;
-  left: 500px;
+  left: 245px;
+  top: 0;
+  background-color: rgb(209, 209, 209);
+  padding-left: 20px;
+}
+
+.range-text {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#brush-range {
+  width: 250px;
 }
 
 /* ---- palette ----- */
-
 #color-sq {
-  width: 300px;
+  position: absolute;
+  left: 700px;
   font-size: 18px;
+  display: flex;
+  align-items: center;
 }
 
-.palette {
-  width: 300px;
-  height: 100px;
+.sp-replacer {
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
-.sp-preview {
-  width: 40px;
-  height: 40px;
+/* ---- help center ----- */
+.help-center {
+  position: absolute;
+  top: 730px;
+  left: 140px;
 }
 
-.sp-dd {
-  padding-top: 10px;
-  font-size: 25px;
+.help-icon:hover {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.help-text {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  top: 550px;
+  left: 200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  display: none;
+}
+
+.help-text p {
+  font-size: 12px;
+  text-align: left;
+  line-height: 60%;
+  color: aliceblue;
 }

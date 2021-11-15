@@ -18,9 +18,8 @@ let styleGuide = {
   fillColor: "rgb(0,200,255)",
   penWidth: 10,
   dashed: [],
-  lineCap: "butt", // for dashes, put in the distance, for none make array empty
-  emojiSource: "",
-  emojiLength: 72,
+  lineCap: "round", // for dashes, put in the distance, for none make array empty
+  lineJoin: "miter",
   backgroundColor: "white",
   textSize: 20,
   font: "Arial",

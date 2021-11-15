@@ -106,4 +106,18 @@ $(() => {
   // $("#inner").click(function() {
   //     editOuter = false;
   // });
+
+  // tooltip of buttons
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+
+  // Help center hover
+  $("#help-button").mouseenter(() => {
+    $("#help-text").show();
+  });
+
+  $("#help-button").mouseleave(() => {
+    $("#help-text").hide();
+  });
 });
