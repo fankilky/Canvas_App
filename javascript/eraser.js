@@ -16,6 +16,8 @@ class Eraser extends PaintFunction {
     // On mouse down, ensure that the pen has these features
     onMouseDown(coord, event) {
             this.context.lineWidth = styleGuide.penWidth; //only penWidth can be changed
+            this.origX = coord[0];
+            this.origY = coord[1];
             this.context.beginPath();
             this.context.moveTo(coord[0], coord[1]);
         }
@@ -26,7 +28,12 @@ class Eraser extends PaintFunction {
     }
 
     onMouseMove() {}
-    onMouseUp() {
+    onMouseUp(coord) {
+        this.context.globalCompositeOperation = "source-over";
+        // this.context.strokeStyle = "#ffffff";
+        // this.context.beginPath();
+        // this.context.moveTo(this.origX, this.origY);
+        // this.draw(coord[0], coord[1]);
         saveStroke();
     }
     onMouseLeave() {

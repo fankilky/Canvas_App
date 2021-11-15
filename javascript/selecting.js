@@ -31,7 +31,6 @@ class Selecting extends PaintFunction {
             this.origX = coord[0];
             this.origY = coord[1];
             this.dragCountAfterPaste = 0
-            console.log(`change`)
 
         } else {
 
@@ -46,7 +45,7 @@ class Selecting extends PaintFunction {
                     this.originalMove = false;
                 }
                 this.putImage([this.objDraft, this.origX, this.origY], [this.obj, this.origX, this.origY]);
-                if (this.obj.width == this.objCopy.width) {
+                if (this.objCopy !== null && this.obj.width == this.objCopy.width) {
                     this.dragCountAfterPaste++
                 }
             } else {
@@ -215,7 +214,6 @@ class Selecting extends PaintFunction {
     }
     cutSelect() {
         if (this.selectionMade == true) {
-            console.log(`hi`)
 
             this.adjustPoints()
             this.objCopy = new ImageData(($.extend(true, {}, this.obj).data), this.obj.width)
@@ -233,8 +231,6 @@ class Selecting extends PaintFunction {
     }
 
     pasteSelect() {
-        console.log(this.dragCountAfterPaste)
-        console.log(this.selectionMade)
         this.afterPaste = true;
         if (this.dragCountAfterPaste > 0 && this.selectionMade == true) {
             this.contextReal.putImageData(this.objCopy, this.origX, this.origY);
