@@ -27,7 +27,6 @@ let styleGuide = {
 
 let keyListeners = {
     shift: false,
-    escape: false,
     cmdC: false,
     cmdX: false,
     cmdV: false,
@@ -103,17 +102,11 @@ $(document).keydown((e) => {
     if (e.key == "Shift") {
         keyListeners.shift = true;
     }
-    if (e.key == "Escape") {
-        keyListeners.escape = true;
-    }
 });
 
 $(document).keyup((e) => {
     if (e.key == "Shift") {
         keyListeners.shift = false;
-    }
-    if (e.key == "Escape") {
-        keyListeners.escape = false;
     }
 });
 

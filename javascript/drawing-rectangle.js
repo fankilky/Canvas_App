@@ -10,14 +10,12 @@ class DrawingRectangle extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.escape = false;
     }
 
     onMouseDown(coord, event) {
         setCanvasToStyleGuide()
         this.origX = coord[0];
         this.origY = coord[1];
-        this.escape = false;
     }
 
     onDragging(coord, event) {
@@ -32,7 +30,6 @@ class DrawingRectangle extends PaintFunction {
         );
         // Pass in the original x and y coordinates, followed by the new coordinates that we get for position x and y
         this.checkAndDraw(this.origX, this.origY, coord[0], coord[1], this.contextDraft)
-        this.escape = false;
     }
 
     onMouseMove() {}
@@ -51,22 +48,19 @@ class DrawingRectangle extends PaintFunction {
         // Without this commit, it won't actually draw
         this.checkAndDraw(this.origX, this.origY, coord[0], coord[1], this.contextReal)
         saveStroke()
-        this.escape = false;
     }
     onMouseLeave() {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height)
-        this.escape = true;
     }
     onMouseEnter() {}
 
 
     checkAndDraw(x1, y1, x2, y2, context) {
-        if (!(this.escape)) {
-            if (keyListeners.shift) {
-                this.drawSquare(x1, y1, x2, y2, context)
-            } else {
-                this.drawRectangle(x1, y1, x2, y2, context)
-            }
+
+        if (keyListeners.shift) {
+            this.drawSquare(x1, y1, x2, y2, context)
+        } else {
+            this.drawRectangle(x1, y1, x2, y2, context)
         }
     }
     drawRectangle(x1, y1, x2, y2, context) {
