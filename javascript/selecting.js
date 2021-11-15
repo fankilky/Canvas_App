@@ -18,6 +18,7 @@ class Selecting extends PaintFunction {
         this.originalMove = false;
         this.dragCountAfterPaste = 0;
         this.imageDragging = false;
+        this.afterPaste = false;
     };
 
     onMouseDown(coord, event) {
@@ -30,6 +31,7 @@ class Selecting extends PaintFunction {
             this.origX = coord[0];
             this.origY = coord[1];
             this.dragCountAfterPaste = 0
+            console.log(`change`)
 
         } else {
 
@@ -38,12 +40,15 @@ class Selecting extends PaintFunction {
             if ((coord[0] > this.origX) && (coord[0] < this.finalX) && (coord[1] > this.origY) && (coord[1] < this.finalY)) { //clicking the selected area
 
 
-                if (this.originalMove == true) {
+                if (this.originalMove == true && this.afterPaste == false) {
                     this.contextReal.fillStyle = 'white';
                     this.contextReal.fillRect(this.origX, this.origY, this.obj.width, this.obj.height);
                     this.originalMove = false;
                 }
                 this.putImage([this.objDraft, this.origX, this.origY], [this.obj, this.origX, this.origY]);
+                if (this.obj.width == this.objCopy.width) {
+                    this.dragCountAfterPaste++
+                }
             } else {
                 this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
                 this.contextReal.putImageData(this.obj, this.origX, this.origY);
@@ -53,6 +58,7 @@ class Selecting extends PaintFunction {
                 this.objDraft = null;
                 this.obj = null;
                 this.originalMove = false;
+                saveStroke();
             }
         }
     };
@@ -72,6 +78,7 @@ class Selecting extends PaintFunction {
             this.putImage([this.objDraft, coord[0] - this.objDraft.width / 2, coord[1] - this.objDraft.height / 2], [this.obj, coord[0] - this.obj.width / 2, coord[1] - this.obj.height / 2])
             this.imageDragging = true;
         }
+        this.afterPaste = false;
     };
 
     onMouseUp(coord) {
@@ -95,9 +102,8 @@ class Selecting extends PaintFunction {
             this.origY = coord[1] - this.obj.height / 2;
             this.finalX = coord[0] + this.obj.width / 2;
             this.finalY = coord[1] + this.obj.height / 2;
-            if (this.obj.width == this.objCopy.width) {
-                this.dragCountAfterPaste++
-            }
+            // saveStroke()
+
         }
     };
 
@@ -227,11 +233,15 @@ class Selecting extends PaintFunction {
     }
 
     pasteSelect() {
-        this.selectionMade = true
-        if (this.dragCountAfterPaste > 0) {
+        console.log(this.dragCountAfterPaste)
+        console.log(this.selectionMade)
+        this.afterPaste = true;
+        if (this.dragCountAfterPaste > 0 && this.selectionMade == true) {
             this.contextReal.putImageData(this.objCopy, this.origX, this.origY);
             this.dragCountAfterPaste = 0
         }
+
+        this.selectionMade = true;
         this.obj = new ImageData(($.extend(true, {}, this.objCopy).data), this.objCopy.width)
         this.objDraft = new ImageData(($.extend(true, {}, this.objCopy).data), this.objCopy.width)
         this.contextDraft.putImageData(this.objCopy, 0, 0)
